@@ -91,6 +91,7 @@ def main(args):
 
         # Logging.
         logging.info('epoch %d', epoch)
+        logging.info(args)
         train_obj, global_step = train_vae(args, train_queue, vae, vae_optimizer, grad_scalar, global_step, warmup_iters,
                                            writer, logging, sn_calculator)
 
@@ -472,5 +473,5 @@ if __name__ == '__main__':
     else:
         # for debugging
         print('starting in debug mode')
-        args.distributed = True
+        args.distributed = False
         utils.init_processes(0, size, main, args)

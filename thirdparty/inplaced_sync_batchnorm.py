@@ -153,7 +153,7 @@ class SyncBatchNormSwish(_BatchNorm):
             process_group = torch.distributed.group.WORLD
             if self.process_group:
                 process_group = self.process_group
-            world_size = torch.distributed.get_world_size(process_group)
+            world_size = 1
             need_sync = world_size > 1
 
         # fallback to framework BN when synchronization is not necessary
